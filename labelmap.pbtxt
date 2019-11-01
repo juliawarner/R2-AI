@@ -1,0 +1,29 @@
+item {
+  id: 1
+  name: 'Vader'
+}
+
+item {
+  id: 2
+  name: 'Obi-Wan'
+}
+
+item {
+  id: 3
+  name: 'Leia'
+}
+
+item {
+  id: 4
+  name: 'Luke'
+}
+
+item {
+  id: 5
+  name: 'C-3PO'
+}
+
+item {
+  id: 6
+  name: 'Han'
+}
