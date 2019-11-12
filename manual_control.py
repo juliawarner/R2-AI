@@ -6,33 +6,33 @@ import pygame
 class R2_D2():
 	def __init__(self):
 		#movement variables
-		legs = Robot(left=(5, 6), right=(17, 27))
-		turning_right = False
-		turning_left = False
-		moving_forward = False
-		moving_backward = False
+		self.legs = Robot(left=(5, 6), right=(17, 27))
+		self.turning_right = False
+		self.turning_left = False
+		self.moving_forward = False
+		self.moving_backward = False
 
 	#function calls Robot.right() if not already moving right
 	def turn_right(self):
-		if(not turning_right):
+		if(not self.turning_right):
 			self.legs.right()
 			self.turning_right = True
 
 	#funtion calls Robot.left() if not already moving left
 	def turn_left(self):
-		if(not turning_left):
+		if(not self.turning_left):
 			self.legs.left()
 			self.turning_left = True
 
 	#function calls Robot.forward() if not already moving forward
 	def move_forward(self):
-		if(not moving_forward):
+		if(not self.moving_forward):
 			self.legs.forward()
 			self.moving_forward = True
 
 	#function calls Robot.backward() if not already moving backward
 	def move_backward(self):
-		if(not moving_backward):
+		if(not self.moving_backward):
 			self.legs.backward()
 			self.moving_backward = True
 
