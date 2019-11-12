@@ -47,10 +47,13 @@ class R2_D2():
 #create an artoo
 artoo = R2_D2()
 
+#intialize dummy screen to make keybaord input possible
+screen = pygame.display.set_mode((50,50))
+
 #initiate pygame loop
 pygame.init()
-quit = False
-while(1):
+running = True
+while(running):
 	#control artoo with the arrow keys
 	events = pygame.event.get()
 	for event in events:
@@ -65,7 +68,7 @@ while(1):
 				artoo.move_backward()
 			#quit by pressing q key
 			if event.key == pygame.K_q:
-				quit = True
+				running = False
 
 		if event.type == pygame.KEYUP: 
 			if event.key == pygame.K_LEFT:
@@ -76,11 +79,8 @@ while(1):
 			  	artoo.stop_movement()
 			if event.key == pygame.K_DOWN:
 			  	artoo.stop_movement()
-						
-	if(quit):
-		break
 
-
+pygame.quit()
 
 
 
