@@ -49,6 +49,7 @@ artoo = R2_D2()
 
 #initiate pygame loop
 pygame.init()
+quit = False
 while(1):
 	#control artoo with the arrow keys
 	events = pygame.event.get()
@@ -64,17 +65,20 @@ while(1):
 				artoo.move_backward()
 			#quit by pressing q key
 			if event.key == pygame.K_q:
-				break
+				quit = True
 
 		if event.type == pygame.KEYUP: 
 			if event.key == pygame.K_LEFT:
-			    artoo.stop_movement()
+				artoo.stop_movement()
 			if event.key == pygame.K_RIGHT:
-			    artoo.stop_movement()
+				artoo.stop_movement()
 			if event.key == pygame.K_UP:
 			  	artoo.stop_movement()
 			if event.key == pygame.K_DOWN:
 			  	artoo.stop_movement()
+						
+	if(quit):
+		break
 
 
 
