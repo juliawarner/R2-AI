@@ -48,6 +48,7 @@ class R2_D2():
 artoo = R2_D2()
 
 #initiate pygame loop
+pygame.init()
 while(1):
 	#control artoo with the arrow keys
 	events = pygame.event.get()
