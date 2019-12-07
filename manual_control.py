@@ -38,11 +38,62 @@ class R2_D2():
 
 	#functions stops all robot movements, sets all movement variables to false
 	def stop_movement(self):
-		self.legs.stop()
 		self.turning_right = False
 		self.turning_left = False
 		self.moving_forward = False
 		self.moving_backward = False
+		moving = False
+
+		keys = pygame.key.get_pressed()
+		if(keys[K_UP]):
+			self.move_forward()
+			moving = True
+		elif(keys[K_RIGHT]):
+			self.turn_right()
+			moving = True
+		elif(keys[K_DOWN]):
+			self.move_backward()
+			moving = True
+		elif(keys[K_LEFT]):
+			self.turn_left()
+			moving = True
+
+		if(not moving):
+			self.legs.stop()
+
+
+	#initializes R2's sounds
+	#call only after pygame.init has been called
+	def init_sounds(self):
+		self.scream_sound = pygame.mixer.Sound('./sounds/scream.wav')
+		self.helpme_long_sound = pygame.mixer.Sound('./sounds/helpme_long.wav')
+		self.helpme_short_sound = pygame.mixer.Sound('./sounds/helpme_short.wav')
+		self.chatter1_sound = pygame.mixer.Sound('./sounds/chatter1.wav')
+		self.chatter2_sound = pygame.mixer.Sound('./sounds/chatter2.wav')
+		self.chatter3_sound = pygame.mixer.Sound('./sounds/chatter3.wav')
+		self.chatter4_sound = pygame.mixer.Sound('./sounds/chatter4.wav')
+		self.chatter5_sound = pygame.mixer.Sound('./sounds/chatter5.wav')
+		self.chatter6_sound = pygame.mixer.Sound('./sounds/chatter6.wav')
+		self.chatter6_sound = pygame.mixer.Sound('./sounds/chatter7.wav')
+		self.cute_sound = pygame.mixer.Sound('./sounds/cute.wav')
+		self.excited_sound = pygame.mixer.Sound('./sounds/excited.wav')
+		self.insistent_sound = pygame.mixer.Sound('./sounds/insistent.wav')
+		self.laughter_sound = pygame.mixer.Sound('./sounds/laughter.wav')
+		self.no_sound = pygame.mixer.Sound('./sounds/no.wav')
+		self.processing_sound = pygame.mixer.Sound('./sounds/processing.wav')
+		self.reallysad_sound = pygame.mixer.Sound('./sounds/reallysad.wav')
+		self.sad_sound = pygame.mixer.Sound('./sounds/sad.wav')
+		self.searching_whistle_sound = pygame.mixer.Sound('./sounds/searching_whistle.wav')
+		self.unhappy_sound = pygame.mixer.Sound('./sounds/unhappy.wav')
+		self.warning_sound = pygame.mixer.Sound('./sounds/warning.wav')
+		self.yes_sound = pygame.mixer.Sound('./sounds/yes.wav')
+
+	#plays a sound based on given input, does nothing if input invalid
+	#assumes pygame is initialized 
+	def play_sound(self, sound_name):
+		sound_location = './sounds/' + sound_name + '.wav'
+		sound = pygame.mixer.Sound(sound_location)
+		pygame.mixer.Sound.play(sound)
 
 #create an artoo
 artoo = R2_D2()
@@ -58,6 +109,7 @@ while(running):
 	events = pygame.event.get()
 	for event in events:
 		if event.type == pygame.KEYDOWN:
+			#movement
 			if event.key == pygame.K_LEFT:
 				artoo.turn_left()
 			if event.key == pygame.K_RIGHT:
@@ -66,6 +118,13 @@ while(running):
 				artoo.move_forward()
 			if event.key == pygame.K_DOWN:
 				artoo.move_backward()
+			#sounds
+			if event.key == pygame.K_h:
+				artoo.play_sound('helpme_short')
+			if event.key == pygame.K_s:
+				artoo.play_sound('scream')
+			if event.key == pygame.K_e:
+				artoo.play_sound('excited')
 			#quit by pressing q key
 			if event.key == pygame.K_q:
 				running = False
