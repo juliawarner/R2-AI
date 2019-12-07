@@ -103,7 +103,7 @@ screen = pygame.display.set_mode((50,50))
 
 #initiate pygame loop
 pygame.init()
-pygame.mixer.init(allowedchanges=pygame.AUDIO_ALLOW_FREQUENCY_CHANGE)
+pygame.mixer.init(allowedchanges=0)
 running = True
 while(running):
 	#control artoo with the arrow keys
