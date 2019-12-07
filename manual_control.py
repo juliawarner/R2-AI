@@ -45,16 +45,16 @@ class R2_D2():
 		moving = False
 
 		keys = pygame.key.get_pressed()
-		if(keys[K_UP]):
+		if(keys[pygame.K_UP]):
 			self.move_forward()
 			moving = True
-		elif(keys[K_RIGHT]):
+		elif(keys[pygame.K_RIGHT]):
 			self.turn_right()
 			moving = True
-		elif(keys[K_DOWN]):
+		elif(keys[pygame.K_DOWN]):
 			self.move_backward()
 			moving = True
-		elif(keys[K_LEFT]):
+		elif(keys[pygame.K_LEFT]):
 			self.turn_left()
 			moving = True
 
@@ -103,6 +103,7 @@ screen = pygame.display.set_mode((50,50))
 
 #initiate pygame loop
 pygame.init()
+pygame.mixer.init(allowedchanges=AUDIO_ALLOW_FREQUENCY_CHANGE)
 running = True
 while(running):
 	#control artoo with the arrow keys
