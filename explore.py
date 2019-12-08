@@ -255,7 +255,8 @@ class R2_D2():
                 self.red = True
                 self.light.color = (1, 0, 0)
 
-
+#constant fo match threshold for R2 to react to a detection
+THRESHOLD = 0.85
 
 # Set up camera constants
 IM_WIDTH = 1280
@@ -378,11 +379,6 @@ if camera_type == 'picamera':
             [detection_boxes, detection_scores, detection_classes, num_detections],
             feed_dict={image_tensor: frame_expanded})
 
-        print('Classes:')
-        print(classes)
-        print('Scores:')
-        print(scores)
-
         # Draw the results of the detection (aka 'visulaize the results')
         vis_util.visualize_boxes_and_labels_on_image_array(
             frame,
@@ -407,19 +403,19 @@ if camera_type == 'picamera':
         # Check the class of the top detected object by looking at classes[0][0].
 
         #check if seeing Vader
-        if (int(classes[0][0]) == 1):
+        if ((int(classes[0][0]) == 1) && (int(scores[0][0]) > THRESHOLD)):
         	artoo.seeing_Vader = True
         else:
         	artoo.seeing_Vader = False
 
         #check if seeing Obi-Wan
-        if (int(classes[0][0]) == 2):
+        if ((int(classes[0][0]) == 2) && (int(scores[0][0]) > THRESHOLD)):
         	artoo.seeing_Obiwan = True
         else:
             artoo.seeing_Obiwan = False
 
         #check if seeing Leia
-        if (int(classes[0][0]) == 3):
+        if ((int(classes[0][0]) == 3) && (int(scores[0][0]) > THRESHOLD)):
         	artoo.seeing_Leia = True
         else:
         	artoo.seeing_Leia = False
