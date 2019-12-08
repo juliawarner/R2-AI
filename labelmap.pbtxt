@@ -5,7 +5,7 @@ item {
 
 item {
   id: 2
-  name: 'Obi-Wan'
+  name: 'Obi-wan'
 }
 
 item {
@@ -13,17 +13,3 @@ item {
   name: 'Leia'
 }
 
-item {
-  id: 4
-  name: 'Luke'
-}
-
-item {
-  id: 5
-  name: 'C-3PO'
-}
-
-item {
-  id: 6
-  name: 'Han'
-}
