@@ -409,21 +409,21 @@ if camera_type == 'picamera':
 
         #check if seeing Vader
         if ((int(classes[0][0]) == 1) and (int(scores[0][0]) > THRESHOLD)):
-        	artoo.seeing_Vader = True
+            artoo.seeing_Vader = True
             print("Seeing Vader")
         else:
         	artoo.seeing_Vader = False
 
         #check if seeing Obi-Wan
         if ((int(classes[0][0]) == 2) and (int(scores[0][0]) > THRESHOLD)):
-        	artoo.seeing_Obiwan = True
+            artoo.seeing_Obiwan = True
             print("Seeing Obi-Wan")
         else:
             artoo.seeing_Obiwan = False
 
         #check if seeing Leia
         if ((int(classes[0][0]) == 3) and (int(scores[0][0]) > THRESHOLD)):
-        	artoo.seeing_Leia = True
+            artoo.seeing_Leia = True
             print("Seeing Leia")
         else:
         	artoo.seeing_Leia = False
