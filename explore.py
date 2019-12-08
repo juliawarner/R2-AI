@@ -291,7 +291,7 @@ CWD_PATH = os.getcwd()
 PATH_TO_CKPT = os.path.join(CWD_PATH,MODEL_NAME,'frozen_inference_graph.pb')
 
 # Path to label map file
-PATH_TO_LABELS = os.path.join(CWD_PATH,'data','mscoco_label_map.pbtxt')
+PATH_TO_LABELS = os.path.join(CWD_PATH,'data','labelmap.pbtxt')
 
 # Number of classes the object detector can identify
 NUM_CLASSES = 3
@@ -398,29 +398,28 @@ if camera_type == 'picamera':
         time1 = (t2-t1)/freq
         frame_rate_calc = 1/time1
 
-        #check to see if R2 sees anyone (unless already fleeing
-        if(not artoo.fleeing):
-        	# Check the class of the top detected object by looking at classes[0][0].
+        #check to see if R2 sees anyone 
+        # Check the class of the top detected object by looking at classes[0][0].
 
-        	#check if seeing Vader
-        	if (int(classes[0][0]) == 1):
-        		artoo.seeing_Vader = True
-        	else:
-        		artoo.seeing_Vader = False
+        #check if seeing Vader
+        if (int(classes[0][0]) == 1):
+        	    artoo.seeing_Vader = True
+        else:
+        	    artoo.seeing_Vader = False
 
-        	#check if seeing Obi-Wan
-        	if (int(classes[0][0]) == 2):
-        		artoo.seeing_Obiwan = True
-        	else:
-        		artoo.seeing_Obiwan = False
+        #check if seeing Obi-Wan
+        if (int(classes[0][0]) == 2):
+        	    artoo.seeing_Obiwan = True
+        else:
+             artoo.seeing_Obiwan = False
 
-        	#check if seeing Leia
-        	if (int(classes[0][0]) == 3):
-        		artoo.seeing_Leia = True
-        	else:
-        		artoo.seeing_Leia = False
+        #check if seeing Leia
+        if (int(classes[0][0]) == 3):
+        	    artoo.seeing_Leia = True
+        else:
+        	    artoo.seeing_Leia = False
 
-        #update R2's light blink
+        #update R2
         artoo.update(time1)
 
         # Press 'q' to quit
