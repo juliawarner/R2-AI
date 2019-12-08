@@ -378,6 +378,11 @@ if camera_type == 'picamera':
             [detection_boxes, detection_scores, detection_classes, num_detections],
             feed_dict={image_tensor: frame_expanded})
 
+        print('Classes:')
+        print(classes)
+        print('Scores:')
+        print(scores)
+
         # Draw the results of the detection (aka 'visulaize the results')
         vis_util.visualize_boxes_and_labels_on_image_array(
             frame,
@@ -403,21 +408,21 @@ if camera_type == 'picamera':
 
         #check if seeing Vader
         if (int(classes[0][0]) == 1):
-        	    artoo.seeing_Vader = True
+        	artoo.seeing_Vader = True
         else:
-        	    artoo.seeing_Vader = False
+        	artoo.seeing_Vader = False
 
         #check if seeing Obi-Wan
         if (int(classes[0][0]) == 2):
-        	    artoo.seeing_Obiwan = True
+        	artoo.seeing_Obiwan = True
         else:
-             artoo.seeing_Obiwan = False
+            artoo.seeing_Obiwan = False
 
         #check if seeing Leia
         if (int(classes[0][0]) == 3):
-        	    artoo.seeing_Leia = True
+        	artoo.seeing_Leia = True
         else:
-        	    artoo.seeing_Leia = False
+        	artoo.seeing_Leia = False
 
         #update R2
         artoo.update(time1)
