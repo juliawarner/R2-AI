@@ -122,7 +122,7 @@ while(running):
 			if event.key == pygame.K_h:
 				artoo.play_sound('helpme_short')
 			if event.key == pygame.K_s:
-				artoo.play_sound('scream1')
+				artoo.play_sound('scream')
 			if event.key == pygame.K_e:
 				artoo.play_sound('excited')
 			#quit by pressing q key
