@@ -61,7 +61,7 @@ class R2_D2():
         self.fleeing = False
 
         #used to blink red-blue light
-        self.light = RGBLED(red=0, green=0, blue=0)
+        self.light = RGBLED(red=16, green=20, blue=21)
         self.light.color = (1, 0, 0)
         self.red = True
         self.time_since_last_blink = 0
@@ -117,7 +117,7 @@ class R2_D2():
         self.update_light(delta_time)
 
         #check if now completing special fleeing movements
-        if(fleeing):
+        if(self.fleeing):
             self.update_fleeing(delta_time)
         else:
             #we are not fleeing, continue making random movements
@@ -127,7 +127,7 @@ class R2_D2():
     #stops last for 3 seconds, movements last for 3 seconds
     #expected delta_time in seconds
     def update_random_movement(self, delta_time):
-        if(moving):
+        if(self.moving):
             #update time
             self.time_moving = self.time_moving + delta_time
 
@@ -148,11 +148,11 @@ class R2_D2():
 
                 #choose a new random movement
                 random_movement = random.randint(1, 5)
-                if(random == 1):
+                if(random_movement == 1):
                     self.move_backward()
-                elif(random == 2):
+                elif(random_movement == 2):
                     self.turn_right()
-                elif(random == 3):
+                elif(random_movement == 3):
                     self.turn_left()
                 else:
                     self.move_forward()
@@ -166,7 +166,7 @@ class R2_D2():
                 self.stop_movement()
                 self.play_sound('scream')
                 self.turn_right()
-            else
+            else:
                 #check if we should stop turning 
                 if(self.time_turning_around >= 2.0):
                     #stop turning, start running
