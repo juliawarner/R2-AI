@@ -148,7 +148,7 @@ class R2_D2():
     		self.time_seeing_Leia = 0
 
     	if(self.seeing_Obiwan):
-    		#if this is the first time we're seeing him (for now), say hello of deliver Leia's message
+    		#if this is the first time we're seeing him (for now), say hello or deliver Leia's message
     		if(self.time_seeing_Obiwan == 0):
     			if(self.seen_Leia):
     				self.play_sound('helpme_short')
@@ -162,6 +162,7 @@ class R2_D2():
     		#if this is the first time we're seeing him (for now), run away!
     		if(self.time_seeing_Vader == 0):
     			self.fleeing = True
+                self.turning_around = True
     		self.time_seeing_Vader = self.time_seeing_Vader + delta_time
     	else:
     		time_seeing_Vader = 0
