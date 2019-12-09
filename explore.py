@@ -161,7 +161,7 @@ class R2_D2():
     	if(self.seeing_Vader):
     		#if this is the first time we're seeing him (for now), run away!
     		if(self.time_seeing_Vader == 0):
-    			self.fleeing = True
+                self.fleeing = True
                 self.turning_around = True
     		self.time_seeing_Vader = self.time_seeing_Vader + delta_time
     	else:
