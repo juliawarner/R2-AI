@@ -138,34 +138,34 @@ class R2_D2():
     #updates the times of seeing different characters (so R2 doesn't react more than once when seeing someone)
     #expected delta_time is in seconds
     def update_character_sighting(self, delta_time):
-    	if(self.seeing_Leia):
-    		self.seen_Leia = True
-    		#if this is the first time we're seeing her (for now), say hello!
-    		if(self.time_seeing_Leia == 0):
-    			self.play_sound('cute')
-    		self.time_seeing_Leia = self.time_seeing_Leia + delta_time
-    	else:
-    		self.time_seeing_Leia = 0
+        if(self.seeing_Leia):
+            self.seen_Leia = True
+            #if this is the first time we're seeing her (for now), say hello!
+            if(self.time_seeing_Leia == 0):
+                self.play_sound('cute')
+            self.time_seeing_Leia = self.time_seeing_Leia + delta_time
+        else:
+            self.time_seeing_Leia = 0
 
-    	if(self.seeing_Obiwan):
-    		#if this is the first time we're seeing him (for now), say hello or deliver Leia's message
-    		if(self.time_seeing_Obiwan == 0):
-    			if(self.seen_Leia):
-    				self.play_sound('helpme_short')
-    			else:
-    				self.play_sound('excited')
-    		self.time_seeing_Obiwan = self.time_seeing_Obiwan + delta_time
-    	else:
-    		time_seeing_Obiwan = 0
+        if(self.seeing_Obiwan):
+            #if this is the first time we're seeing him (for now), say hello or deliver Leia's message
+            if(self.time_seeing_Obiwan == 0):
+                if(self.seen_Leia):
+                    self.play_sound('helpme_short')
+                else:
+                    self.play_sound('excited')
+            self.time_seeing_Obiwan = self.time_seeing_Obiwan + delta_time
+        else:
+            time_seeing_Obiwan = 0
 
-    	if(self.seeing_Vader):
-    		#if this is the first time we're seeing him (for now), run away!
-    		if(self.time_seeing_Vader == 0):
+        if(self.seeing_Vader):
+            #if this is the first time we're seeing him (for now), run away!
+            if(self.time_seeing_Vader == 0):
                 self.fleeing = True
                 self.turning_around = True
-    		self.time_seeing_Vader = self.time_seeing_Vader + delta_time
-    	else:
-    		time_seeing_Vader = 0
+            self.time_seeing_Vader = self.time_seeing_Vader + delta_time
+        else:
+            time_seeing_Vader = 0
     
     #decides whether to stop or choose a new random movement
     #stops last for 3 seconds, movements last for 3 seconds
@@ -413,7 +413,7 @@ if camera_type == 'picamera':
             artoo.seeing_Vader = True
             print("Seeing Vader")
         else:
-        	artoo.seeing_Vader = False
+            artoo.seeing_Vader = False
 
         #check if seeing Obi-Wan
         if ((int(classes[0][0]) == 2) and (scores[0][0] > THRESHOLD)):
@@ -427,7 +427,7 @@ if camera_type == 'picamera':
             artoo.seeing_Leia = True
             print("Seeing Leia")
         else:
-        	artoo.seeing_Leia = False
+            artoo.seeing_Leia = False
 
         #update R2
         artoo.update(time1)
