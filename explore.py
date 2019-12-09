@@ -143,6 +143,9 @@ class R2_D2():
             #if this is the first time we're seeing her (for now), say hello!
             if(self.time_seeing_Leia == 0):
                 self.play_sound('cute')
+                self.time_moving = 0
+                self.moving = False
+                self.stop_movement()
             self.time_seeing_Leia = self.time_seeing_Leia + delta_time
         else:
             self.time_seeing_Leia = 0
@@ -150,13 +153,16 @@ class R2_D2():
         if(self.seeing_Obiwan):
             #if this is the first time we're seeing him (for now), say hello or deliver Leia's message
             if(self.time_seeing_Obiwan == 0):
+                self.time_moving = 0
+                self.moving = False
+                self.stop_movement()
                 if(self.seen_Leia):
                     self.play_sound('helpme_short')
                 else:
                     self.play_sound('excited')
             self.time_seeing_Obiwan = self.time_seeing_Obiwan + delta_time
         else:
-            time_seeing_Obiwan = 0
+            self.time_seeing_Obiwan = 0
 
         if(self.seeing_Vader):
             #if this is the first time we're seeing him (for now), run away!
@@ -165,7 +171,7 @@ class R2_D2():
                 self.turning_around = True
             self.time_seeing_Vader = self.time_seeing_Vader + delta_time
         else:
-            time_seeing_Vader = 0
+            self.time_seeing_Vader = 0
     
     #decides whether to stop or choose a new random movement
     #stops last for 3 seconds, movements last for 3 seconds
@@ -257,7 +263,7 @@ class R2_D2():
                 self.light.color = (1, 0, 0)
 
 #constant fo match threshold for R2 to react to a detection
-THRESHOLD = 0.85
+THRESHOLD = 0.95
 
 # Set up camera constants
 IM_WIDTH = 1280
