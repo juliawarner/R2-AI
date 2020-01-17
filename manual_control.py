@@ -2,6 +2,7 @@ from gpiozero import Robot
 from gpiozero import RGBLED
 import pygame
 import random
+import time
 
 #R2-D2 class
 class R2_D2():
@@ -108,6 +109,9 @@ screen = pygame.display.set_mode((50,50))
 pygame.init()
 running = True
 while(running):
+    #get initial time
+    t0 = time.time()
+
 	#control artoo with the arrow keys
 	events = pygame.event.get()
 	for event in events:
@@ -150,6 +154,9 @@ while(running):
 			  	artoo.stop_movement()
 			if event.key == pygame.K_DOWN:
 			  	artoo.stop_movement()
+
+        #update artoo's time based operations
+        artoo.update(time.time() - t0)
 
 pygame.quit()
 
